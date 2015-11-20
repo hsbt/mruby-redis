@@ -18,14 +18,14 @@ MRuby::Gem::Specification.new('mruby-redis') do |spec|
 
   FileUtils.mkdir_p build_dir
 
+  FileUtils.rm_rf hiredis_dir
+
   if ! File.exists? hiredis_dir
     Dir.chdir(build_dir) do
       e = {}
       run_command e, 'git clone git://github.com/redis/hiredis.git'
     end
   end
-
-  FileUtils.rm_rf "#{hiredis_dir}/libhiredis.a"
 
   if ! File.exists? "#{hiredis_dir}/libhiredis.a"
     Dir.chdir hiredis_dir do
