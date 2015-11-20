@@ -25,6 +25,8 @@ MRuby::Gem::Specification.new('mruby-redis') do |spec|
     end
   end
 
+  FileUtils.rm "#{hiredis_dir}/libhiredis.a"
+
   if ! File.exists? "#{hiredis_dir}/libhiredis.a"
     Dir.chdir hiredis_dir do
       e = {
@@ -35,7 +37,6 @@ MRuby::Gem::Specification.new('mruby-redis') do |spec|
         'PREFIX' => hiredis_dir
       }
 
-      run_command e, "make clean"
       run_command e, "make"
       run_command e, "make install"
     end
