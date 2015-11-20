@@ -35,6 +35,7 @@ MRuby::Gem::Specification.new('mruby-redis') do |spec|
         'PREFIX' => hiredis_dir
       }
 
+      run_command e, "make clean"
       run_command e, "make"
       run_command e, "make install"
     end
