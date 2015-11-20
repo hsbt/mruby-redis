@@ -25,7 +25,7 @@ MRuby::Gem::Specification.new('mruby-redis') do |spec|
     end
   end
 
-  FileUtils.rm "#{hiredis_dir}/libhiredis.a"
+  FileUtils.rm_rf "#{hiredis_dir}/libhiredis.a"
 
   if ! File.exists? "#{hiredis_dir}/libhiredis.a"
     Dir.chdir hiredis_dir do
